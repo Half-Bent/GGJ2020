@@ -420,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RepairImage: {fileID: 0}
   Repaired: 0
+  manager: {fileID: 0}
 --- !u!212 &1872979806
 SpriteRenderer:
   m_ObjectHideFlags: 0
