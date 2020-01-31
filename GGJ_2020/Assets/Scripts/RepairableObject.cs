@@ -7,6 +7,7 @@ public class RepairableObject : MonoBehaviour
 
     public Sprite RepairImage;
     public bool Repaired = false;
+    public RoomManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class RepairableObject : MonoBehaviour
         if(!Repaired){
             GetComponent<SpriteRenderer>().sprite = RepairImage;
             Repaired = true;
+            manager.RepairedObjects++;;
         }
     }
 }
