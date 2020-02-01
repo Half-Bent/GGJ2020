@@ -6,11 +6,13 @@ using XboxCtrlrInput;
 public class CharacterRepairAction : MonoBehaviour
 {
     CharacterMovement movement;
+    CharacterAnimation anim;
 
     // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<CharacterMovement>();
+        anim = GetComponent<CharacterAnimation>();
     }
 
     // Update is called once per frame
@@ -33,12 +35,13 @@ public class CharacterRepairAction : MonoBehaviour
                 for(int i = 0; i < hits.Length; i++){
                     if(!hits[i].tag.Contains("Repairable"))
                         continue;
-                    if(Vector3.Distance( hits[i].transform.position, transform.position) < 1){
+                    if(Vector2.Distance( hits[i].transform.position, transform.position) < 1){
                         hits[i].GetComponent<RepairableObject>().Reapir();
                     }
                     
                 }
             }
+        anim.AnimateRepair();
     }
 
 }
