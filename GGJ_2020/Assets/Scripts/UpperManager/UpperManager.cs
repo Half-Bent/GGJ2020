@@ -8,6 +8,8 @@ public class UpperManager : MonoBehaviour
 {
 
     public List<RoomManager> Rooms = new List<RoomManager>();
+    public GameObject Player1;
+    public GameObject Player2;
     public float RunTime = 30;
     public bool started = false;
     private bool GameDone = false;
@@ -32,6 +34,9 @@ public class UpperManager : MonoBehaviour
 
         if(RunTime <= 0){
             Debug.Log("Game over");
+            GameDone = true;
+            Player1.GetComponent<CharacterMovement>().enabled = false;
+            Player2.GetComponent<CharacterMovement>().enabled = false;
         }
 
         if(Rooms.All(asd => asd.Done)){
