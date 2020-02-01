@@ -69,6 +69,7 @@ public class UpperManager : MonoBehaviour
     }
 
     public void Restart(){
+        Debug.Log("ladataan");
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

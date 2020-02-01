@@ -16,7 +16,8 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Players.Count == 1){
+        
+        if(!Players[1].activeSelf){
             transform.position = new Vector3(Players[0].transform.position.x, Players[0].transform.position.y, transform.position.z);
         }else{
             Bounds bounds = new Bounds();

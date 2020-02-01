@@ -28,10 +28,10 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         Vector3 mov = new Vector3();
-        if(CurrentController != XboxController.Any){
+        if(CurrentController == XboxController.First){
             XCI.GetAxis(XboxAxis.LeftStickX, CurrentController);
             mov = new Vector3(XCI.GetAxis(XboxAxis.LeftStickX, CurrentController), XCI.GetAxis(XboxAxis.LeftStickY, CurrentController));
-        }if(CurrentController == XboxController.First){
+        }else{
             mov = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
         transform.position = transform.position + mov * speed * Time.deltaTime;
