@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class UpperManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class UpperManager : MonoBehaviour
     public float RunTime = 30;
     public bool started = false;
     private bool GameDone = false;
+    
+    public TextMeshProUGUI Timer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +25,10 @@ public class UpperManager : MonoBehaviour
     {
         if(!started || GameDone)
             return;
-
+        
         RunTime -= Time.deltaTime;
+
+        Timer.text = RunTime.ToString("N2");
 
         if(RunTime <= 0){
             Debug.Log("Game over");
