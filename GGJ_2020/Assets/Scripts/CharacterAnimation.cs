@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class CharacterAnimation : MonoBehaviour
-{
+{ 
+    public List<AudioClip> swingSounds;
+    public List<AudioClip> hitSounds;
+    public AudioClip footstepSound;
+
     private Animator myAnim;
     private SpriteRenderer spriteRenderer;
-
+    private AudioSource audioSource;
+    private float footstepBreakTime = 0f;
 
     void Start()
     {
         myAnim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void AnimateMovement(Vector3 movement)
@@ -43,11 +50,27 @@ public class CharacterAnimation : MonoBehaviour
             myAnim.SetBool("facingDown", false);
             myAnim.SetBool("facingSide", true);
         }
-        
+
+        if (footstepBreakTime <= 0 && movement.magnitude > 0.1f)
+        {
+            footstepBreakTime = 0.25f;
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.volume = 0.5f;
+            audioSource.clip = footstepSound;
+            audioSource.Play();
+        }
+
+        if (footstepBreakTime > 0)
+            footstepBreakTime -= Time.deltaTime;
     }
 
     public void AnimateRepair()
     {
+        audioSource.pitch = 1f;
+        audioSource.volume = 1f;
+        audioSource.clip = swingSounds[Random.Range(0, swingSounds.Count)];
+        audioSource.Play();
+
         myAnim.SetTrigger("repair");
     }
 }
