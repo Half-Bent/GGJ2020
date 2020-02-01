@@ -46,6 +46,8 @@ public class UpperManager : MonoBehaviour
         if(Rooms.All(asd => asd.Done)){
             AllFixed();
             GameDone = true;
+            Player1.GetComponent<CharacterMovement>().enabled = false;
+            Player2.GetComponent<CharacterMovement>().enabled = false;
         }
     }
     
@@ -62,6 +64,8 @@ public class UpperManager : MonoBehaviour
             Player2.SetActive(false);
         }
         started = true;
+        Player1.GetComponent<CharacterMovement>().enabled = true;
+        Player2.GetComponent<CharacterMovement>().enabled = true;
     }
 
     public void Restart(){
