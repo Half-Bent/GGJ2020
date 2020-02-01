@@ -9,6 +9,8 @@ public class RoomManager : MonoBehaviour
     public int RepairedObjects = 0;
     public bool Done = false;
 
+    public GameObject Door;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class RoomManager : MonoBehaviour
     {
         if(RepairedObjects >= RepairableObjects.Count){
             Done = true;
+            Door.SetActive(false);
         }
     }
 }
