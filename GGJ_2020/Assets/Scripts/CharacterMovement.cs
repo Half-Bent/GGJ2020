@@ -9,7 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 5;
     public CharacterAnimation charAnimation;
     [SerializeField]
-    private XboxController CurrentController;
+    private XboxController CurrentController = XboxController.Any;
     public XboxController GetController{
         get{return CurrentController;}
     }
@@ -28,10 +28,10 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
         Vector3 mov = new Vector3();
-        if(IsController){
+        if(CurrentController != XboxController.Any){
             XCI.GetAxis(XboxAxis.LeftStickX, CurrentController);
             mov = new Vector3(XCI.GetAxis(XboxAxis.LeftStickX, CurrentController), XCI.GetAxis(XboxAxis.LeftStickY, CurrentController));
-        }else{
+        }if(CurrentController == XboxController.First){
             mov = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
         transform.position = transform.position + mov * speed * Time.deltaTime;

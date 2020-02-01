@@ -18,11 +18,11 @@ public class CharacterRepairAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(movement.IsController){
+        if(movement.GetController != XboxController.Any){
             if(XCI.GetButtonDown(XboxButton.A, movement.GetController)){
                 doAction();
             }
-        }else{
+        }if(movement.GetController == XboxController.First){
             if(Input.GetKeyDown(KeyCode.Space))
                 doAction();
         }

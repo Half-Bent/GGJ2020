@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UpperManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class UpperManager : MonoBehaviour
     public float RunTime = 30;
     public bool started = false;
     private bool GameDone = false;
+    public GameObject winnerPanel;
+    public GameObject gamePanel;
+    public GameObject GameOverPanel;
     
     public TextMeshProUGUI Timer;
 
@@ -33,7 +37,7 @@ public class UpperManager : MonoBehaviour
         Timer.text = RunTime.ToString("N2");
 
         if(RunTime <= 0){
-            Debug.Log("Game over");
+            GameOver();
             GameDone = true;
             Player1.GetComponent<CharacterMovement>().enabled = false;
             Player2.GetComponent<CharacterMovement>().enabled = false;
@@ -45,8 +49,22 @@ public class UpperManager : MonoBehaviour
         }
     }
     
+    public void GameOver(){
+        GameOverPanel.SetActive(true);
+    }
 
     public void AllFixed(){
-        Debug.Log("You win");
+        winnerPanel.SetActive(true);
+    }
+
+    public void StartGame(bool Solo){
+        if(Solo){
+            Player2.SetActive(false);
+        }
+        started = true;
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }
