@@ -6,9 +6,13 @@ public class RepairableObject : MonoBehaviour
 {
 
     public Sprite RepairImage;
+    public List<AudioClip> audios;
+    
     public Animator anim;
     public bool Repaired = false;
     public RoomManager manager;
+
+    private AudioSource Source;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +36,8 @@ public class RepairableObject : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = RepairImage;
             Repaired = true;
             manager.RepairedObjects++;
+            Source.clip = audios[Random.Range(0, audios.Count - 1)];
+            Source.Play();
         }
     }
 }

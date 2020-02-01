@@ -17,6 +17,8 @@ public class UpperManager : MonoBehaviour
     public GameObject winnerPanel;
     public GameObject gamePanel;
     public GameObject GameOverPanel;
+    public AudioSource EndSoundSource;
+    public AudioClip endSound;
     
     public TextMeshProUGUI Timer;
 
@@ -53,6 +55,8 @@ public class UpperManager : MonoBehaviour
     
     public void GameOver(){
         GameOverPanel.SetActive(true);
+        EndSoundSource.clip = endSound;
+        EndSoundSource.Play();
     }
 
     public void AllFixed(){
