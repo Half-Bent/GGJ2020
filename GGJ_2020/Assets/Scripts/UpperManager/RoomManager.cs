@@ -5,11 +5,13 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour
 {
 
-    public List<GameObject> RepairableObjects = new List<GameObject>();
+    public int RepairObjectCount = 3;
     public int RepairedObjects = 0;
     public bool Done = false;
+    public bool LastRoom;
 
     public GameObject Door;
+    public GameObject Door2;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +22,12 @@ public class RoomManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(RepairedObjects >= RepairableObjects.Count){
+        if(RepairedObjects >= RepairObjectCount){
             Done = true;
-            Door.SetActive(false);
+            if(!LastRoom){
+                Door.SetActive(false);
+                Door2.SetActive(false);
+            }
         }
     }
 }
