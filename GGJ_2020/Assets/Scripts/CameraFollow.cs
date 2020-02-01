@@ -22,9 +22,7 @@ public class CameraFollow : MonoBehaviour
         }else{
             Bounds bounds = new Bounds();
             for(int i = 0; i < Players.Count; i++){
-                if(Players[i].activeSelf){
-                    bounds.Encapsulate(Players[i].transform.position);
-                }
+                bounds.Encapsulate(Players[i].transform.position);
             }
 
             transform.position = new Vector3(bounds.center.x, bounds.center.y, transform.position.z);
