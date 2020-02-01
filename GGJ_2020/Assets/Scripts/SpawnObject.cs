@@ -10,7 +10,7 @@ public class SpawnObject : MonoBehaviour
     private void Start()
     {
         // Get random from availables
-        selectedObject = Instantiate(availableObjects[Random.Range(0, availableObjects.Count - 1)]);
+        selectedObject = Instantiate(availableObjects[Random.Range(0, availableObjects.Count)]);
         selectedObject.transform.position = transform.position;
     }
 }
