@@ -19,6 +19,8 @@ public class RepairableObject : MonoBehaviour
     {
         if (manager == null)
             manager = FindObjectOfType<RoomManager>();
+
+        Source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,7 +38,8 @@ public class RepairableObject : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = RepairImage;
             Repaired = true;
             manager.RepairedObjects++;
-            Source.clip = audios[Random.Range(0, audios.Count - 1)];
+            Source.clip = audios[Random.Range(0, audios.Count)];
+            Source.volume = 0.5f;
             Source.Play();
         }
     }

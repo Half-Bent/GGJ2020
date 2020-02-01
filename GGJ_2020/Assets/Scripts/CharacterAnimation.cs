@@ -55,7 +55,7 @@ public class CharacterAnimation : MonoBehaviour
         {
             footstepBreakTime = 0.25f;
             audioSource.pitch = Random.Range(0.8f, 1.2f);
-            audioSource.volume = 0.5f;
+            audioSource.volume = 0.25f;
             audioSource.clip = footstepSound;
             audioSource.Play();
         }
