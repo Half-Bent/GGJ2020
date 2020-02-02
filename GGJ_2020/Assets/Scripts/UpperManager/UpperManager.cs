@@ -22,6 +22,7 @@ public class UpperManager : MonoBehaviour
     public AudioClip winSound;
     
     public TextMeshProUGUI Timer;
+    public TextMeshProUGUI Coundown;
 
     // Start is called before the first frame update
     void Start()
@@ -70,12 +71,8 @@ public class UpperManager : MonoBehaviour
     }
 
     public void StartGame(bool Solo){
-        if(Solo){
-            Player2.SetActive(false);
-        }
-        started = true;
-        Player1.GetComponent<CharacterMovement>().enabled = true;
-        Player2.GetComponent<CharacterMovement>().enabled = true;
+        StartCoroutine(StartCountdown(Solo));
+        
     }
 
     public void Restart(){
@@ -85,5 +82,23 @@ public class UpperManager : MonoBehaviour
 
     public void ExitGame(){
         Application.Quit();
+    }
+
+    IEnumerator StartCountdown(bool Solo){
+
+        Coundown.text = 3.ToString();
+        yield return new WaitForSeconds(1);
+        Coundown.text = 2.ToString();
+        yield return new WaitForSeconds(1);
+        Coundown.text = 1.ToString();
+        yield return new WaitForSeconds(1);
+        Coundown.text = "GO";
+
+        if(Solo){
+            Player2.SetActive(false);
+        }
+        started = true;
+        Player1.GetComponent<CharacterMovement>().enabled = true;
+        Player2.GetComponent<CharacterMovement>().enabled = true;
     }
 }
