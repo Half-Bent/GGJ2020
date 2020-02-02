@@ -6,7 +6,7 @@ using UnityEngine;
 public class MusicObject : MonoBehaviour
 {
     public AudioClip music;
-    public float volume = 0.75f;
+    public float volume = 0.85f;
     public AudioSource audioSource;
 
 

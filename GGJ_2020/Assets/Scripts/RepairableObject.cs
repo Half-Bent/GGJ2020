@@ -39,7 +39,7 @@ public class RepairableObject : MonoBehaviour
             Repaired = true;
             manager.RepairedObjects++;
             Source.clip = audios[Random.Range(0, audios.Count)];
-            Source.volume = 0.5f;
+            Source.volume = 0.4f;
             Source.Play();
         }
     }

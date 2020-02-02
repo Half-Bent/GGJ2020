@@ -18,7 +18,7 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        audiosource.volume = 0.25f;
+        audiosource.volume = 0.50f;
         audiosource.clip = onHighlightedSound;
         audiosource.Play();
     }

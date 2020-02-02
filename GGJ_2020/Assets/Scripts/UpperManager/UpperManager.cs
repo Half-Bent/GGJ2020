@@ -88,7 +88,7 @@ public class UpperManager : MonoBehaviour
     IEnumerator StartCountdown(bool Solo){
 
         Coundown.text = 3.ToString();
-        EndSoundSource.volume = 0.40f;
+        EndSoundSource.volume = 0.75f;
         EndSoundSource.clip = countdownSound;
         EndSoundSource.Play();
         yield return new WaitForSeconds(1);
