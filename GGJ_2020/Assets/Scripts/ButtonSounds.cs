@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class ButtonSounds : MonoBehaviour, IPointerEnterHandler
 {
     public AudioClip onHighlightedSound;
-    public AudioClip onPressedSound;
 
     private AudioSource audiosource;
 
@@ -19,13 +18,8 @@ public class ButtonSounds : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        audiosource.volume = 0.25f;
         audiosource.clip = onHighlightedSound;
-        audiosource.Play();
-    }
-
-    public void OnPressed()
-    {
-        audiosource.clip = onPressedSound;
         audiosource.Play();
     }
 }

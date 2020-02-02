@@ -20,6 +20,7 @@ public class UpperManager : MonoBehaviour
     public AudioSource EndSoundSource;
     public AudioClip endSound;
     public AudioClip winSound;
+    public AudioClip countdownSound;
     
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI Coundown;
@@ -87,18 +88,27 @@ public class UpperManager : MonoBehaviour
     IEnumerator StartCountdown(bool Solo){
 
         Coundown.text = 3.ToString();
+        EndSoundSource.volume = 0.40f;
+        EndSoundSource.clip = countdownSound;
+        EndSoundSource.Play();
         yield return new WaitForSeconds(1);
         Coundown.text = 2.ToString();
+        EndSoundSource.Play();
         yield return new WaitForSeconds(1);
         Coundown.text = 1.ToString();
+        EndSoundSource.Play();
         yield return new WaitForSeconds(1);
         Coundown.text = "GO";
+        EndSoundSource.Play();
 
-        if(Solo){
+        if (Solo){
             Player2.SetActive(false);
         }
         started = true;
         Player1.GetComponent<CharacterMovement>().enabled = true;
         Player2.GetComponent<CharacterMovement>().enabled = true;
+
+        yield return new WaitForSeconds(1);
+        Coundown.text = "";
     }
 }
