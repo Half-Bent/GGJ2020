@@ -32,6 +32,9 @@ public class UpperManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.Escape))
+            ExitGame();
+
         if(!started || GameDone)
             return;
         
@@ -78,5 +81,9 @@ public class UpperManager : MonoBehaviour
     public void Restart(){
         Debug.Log("ladataan");
         SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
+    public void ExitGame(){
+        Application.Quit();
     }
 }
