@@ -21,11 +21,14 @@ public class CameraFollow : MonoBehaviour
             transform.position = new Vector3(Players[0].transform.position.x, Players[0].transform.position.y, transform.position.z);
         }else{
             Bounds bounds = new Bounds();
-            for(int i = 0; i < Players.Count; i++){
+            Vector3 pos = new Vector3();
+            for(int i = 0; i < 2; i++){
+                pos += Players[i].transform.position;
                 bounds.Encapsulate(Players[i].transform.position);
             }
+            pos = pos / 2;
 
-            transform.position = new Vector3(bounds.center.x, bounds.center.y, transform.position.z);
+            transform.position = new Vector3(pos.x, pos.y, transform.position.z);
         }
     }
 }
