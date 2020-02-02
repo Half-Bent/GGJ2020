@@ -1,18 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ButtonSounds : MonoBehaviour
+[RequireComponent(typeof(AudioSource))]
+public class ButtonSounds : MonoBehaviour, IPointerEnterHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public AudioClip onHighlightedSound;
+    public AudioClip onPressedSound;
+
+    private AudioSource audiosource;
+
+
+    private void Start()
     {
-        
+        audiosource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        audiosource.clip = onHighlightedSound;
+        audiosource.Play();
+    }
+
+    public void OnPressed()
+    {
+        audiosource.clip = onPressedSound;
+        audiosource.Play();
     }
 }
